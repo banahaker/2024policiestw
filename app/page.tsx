@@ -1,5 +1,12 @@
+"use client";
+import Navbar from "./components/navbar";
+
 const Home = () => {
-  return <main>Home</main>;
+  return (
+    <main className="dark">
+      <Navbar></Navbar>
+    </main>
+  );
 };
 
 export default Home;
