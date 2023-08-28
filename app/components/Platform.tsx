@@ -94,7 +94,7 @@ export default function Platform() {
 
   return (
     <div className="max-w-[85dvw]  m-auto p-5 border-neutral-500	rounded-md">
-      <div className="top flex justify-between">
+      <div className="top flex justify-between items-center gap-5">
         <Select
           label="候選人"
           className="max-w-xs mb-2 outline-none"
@@ -162,6 +162,9 @@ export default function Platform() {
                     validationState={validationState}
                     onChange={onFormChange}
                   />
+                  <p className="text-sm text-slate-400 px-1">
+                    完整填寫資料才會成功送出喔
+                  </p>
                 </ModalBody>
                 <ModalFooter>
                   <Button color="danger" variant="light" onPress={onClose}>
@@ -171,6 +174,7 @@ export default function Platform() {
                     color="primary"
                     onPress={() => {
                       newPolicy();
+                      onClose();
                     }}
                   >
                     送出
