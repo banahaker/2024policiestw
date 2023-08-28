@@ -9,12 +9,14 @@ import {
   Select,
   SelectItem,
   Input,
+  Card,
+  CardBody,
+  Link,
 } from "@nextui-org/react";
 
 import { useState, ChangeEvent, useEffect, useMemo } from "react";
-import { Link } from "@nextui-org/react";
 import { IPolicy } from "../api/api";
-import { Card, CardBody } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 
 interface IForm {
   title: string;
@@ -23,6 +25,8 @@ interface IForm {
 }
 
 export default function Platform() {
+  const router = useRouter();
+
   const [selected, setSelected] = useState<any>();
 
   const [value, setValue] = useState("");
@@ -85,9 +89,10 @@ export default function Platform() {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert("新增成功\n編號:" + data._id);
+        alert("新增成功\n編號:" + data.insertedId + "\n頁面將重新載入");
       })
       .catch((e) => {
+        console.error(e);
         alert("伺服器錯誤！我們將儘快處裡！");
       });
   };
@@ -175,6 +180,7 @@ export default function Platform() {
                     onPress={() => {
                       newPolicy();
                       onClose();
+                      window.location.reload();
                     }}
                   >
                     送出
@@ -189,14 +195,25 @@ export default function Platform() {
         {data.map((item, index) => {
           if (item.candidate != selected) return;
           return (
-            <Card className="mt-3 hover:scale-105">
+            <Card className="mt-3 overflow-y-hidden hover:scale-105">
               <CardBody>
                 <h4 className="text-xl text-primary-500">{item.title}</h4>
                 <p>
                   來源:{" "}
-                  <Link key={index} href={item.source}>
+                  <Link
+                    key={index}
+                    href={item.source}
+                    className="max-w-[80%]"
+                    style={{
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      maxWidth: "200px",
+                    }}
+                  >
                     {item.source}
                   </Link>
+                  ...
                 </p>
               </CardBody>
             </Card>
