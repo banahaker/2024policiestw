@@ -23,6 +23,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(list);
   } catch (e) {
     console.error(e);
-    return NextResponse.json({ error: 1 }, { status: 500 });
+    return NextResponse.json({ error: 1, message: e }, { status: 500 });
   }
 }
