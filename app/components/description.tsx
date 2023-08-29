@@ -1,7 +1,7 @@
 import { Card, CardBody } from "@nextui-org/react";
 export default function Description() {
   return (
-    <div className="w-full flex flex-col items-center p-10">
+    <div className="flex flex-col items-center max-w-[80dvw] m-auto">
       <Card>
         <CardBody>
           <p className="max-w-[800px] m-auto text-center">

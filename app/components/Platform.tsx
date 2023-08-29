@@ -14,6 +14,8 @@ import {
   Link,
 } from "@nextui-org/react";
 
+import Dash from "./dash";
+
 import { useState, ChangeEvent, useEffect, useMemo } from "react";
 import { IPolicy } from "../api/api";
 import { useRouter } from "next/navigation";
@@ -100,128 +102,133 @@ export default function Platform() {
   };
 
   return (
-    <div className="max-w-[85dvw]  m-auto p-5 border-neutral-500	rounded-md">
-      <div className="top flex justify-between items-center gap-5">
-        <Select
-          label="候選人"
-          className="max-w-xs mb-2 outline-none"
-          variant="bordered"
-          placeholder="選擇候選人"
-          selectedKeys={selected}
-          //@ts-ignore
-          onChange={onChange}
-        >
-          {candidates.map((candidates) => (
-            <SelectItem key={candidates.index} value={candidates.index}>
-              {candidates.name}
-            </SelectItem>
-          ))}
-        </Select>
-        <Button
-          onPress={onOpen}
-          className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg outline-none"
-          radius="full"
-        >
-          新增
-        </Button>
-        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-          <ModalContent>
-            {(onClose) => (
-              <>
-                <ModalHeader className="flex flex-col gap-1 text-xl">
-                  為候選人新增政見
-                </ModalHeader>
-                <ModalBody>
-                  <Select
-                    label="候選人"
-                    className="max-w-xs mb-2 outline-none"
-                    variant="bordered"
-                    placeholder="選擇候選人"
-                    name="candidate"
-                    //@ts-ignore
-                    selectedKeys={form?.candidate}
-                    //@ts-ignore
-                    onChange={onFormChange}
-                  >
-                    {candidates.map((candidates) => (
-                      <SelectItem
-                        key={candidates.index}
-                        value={candidates.index}
-                      >
-                        {candidates.name}
-                      </SelectItem>
-                    ))}
-                  </Select>
-                  <Input
-                    type="text"
-                    label="標題(政策簡述)"
-                    name="title"
-                    onChange={onFormChange}
-                  />
-                  <Input
-                    type="text"
-                    label="來源(網址)"
-                    name="source"
-                    color={validationState === "invalid" ? "danger" : "success"}
-                    errorMessage={
-                      validationState === "invalid" && "請輸入正確格式的網址"
-                    }
-                    validationState={validationState}
-                    onChange={onFormChange}
-                  />
-                  <p className="text-sm text-slate-400 px-1">
-                    完整填寫資料才會成功送出喔
+    <>
+      <Dash list={data}></Dash>
+      <div className="max-w-[85dvw]  m-auto p-5 border-neutral-500	rounded-md">
+        <div className="top flex justify-between items-center gap-5">
+          <Select
+            label="候選人"
+            className="max-w-xs mb-2 outline-none"
+            variant="bordered"
+            placeholder="選擇候選人"
+            selectedKeys={selected}
+            //@ts-ignore
+            onChange={onChange}
+          >
+            {candidates.map((candidates) => (
+              <SelectItem key={candidates.index} value={candidates.index}>
+                {candidates.name}
+              </SelectItem>
+            ))}
+          </Select>
+          <Button
+            onPress={onOpen}
+            className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg outline-none"
+            radius="full"
+          >
+            新增
+          </Button>
+          <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+            <ModalContent>
+              {(onClose) => (
+                <>
+                  <ModalHeader className="flex flex-col gap-1 text-xl">
+                    為候選人新增政見
+                  </ModalHeader>
+                  <ModalBody>
+                    <Select
+                      label="候選人"
+                      className="max-w-xs mb-2 outline-none"
+                      variant="bordered"
+                      placeholder="選擇候選人"
+                      name="candidate"
+                      //@ts-ignore
+                      selectedKeys={form?.candidate}
+                      //@ts-ignore
+                      onChange={onFormChange}
+                    >
+                      {candidates.map((candidates) => (
+                        <SelectItem
+                          key={candidates.index}
+                          value={candidates.index}
+                        >
+                          {candidates.name}
+                        </SelectItem>
+                      ))}
+                    </Select>
+                    <Input
+                      type="text"
+                      label="標題(政策簡述)"
+                      name="title"
+                      onChange={onFormChange}
+                    />
+                    <Input
+                      type="text"
+                      label="來源(網址)"
+                      name="source"
+                      color={
+                        validationState === "invalid" ? "danger" : "success"
+                      }
+                      errorMessage={
+                        validationState === "invalid" && "請輸入正確格式的網址"
+                      }
+                      validationState={validationState}
+                      onChange={onFormChange}
+                    />
+                    <p className="text-sm text-slate-400 px-1">
+                      完整填寫資料才會成功送出喔
+                    </p>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="danger" variant="light" onPress={onClose}>
+                      關閉
+                    </Button>
+                    <Button
+                      color="primary"
+                      onPress={() => {
+                        newPolicy();
+                        onClose();
+                        window.location.reload();
+                      }}
+                    >
+                      送出
+                    </Button>
+                  </ModalFooter>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
+        </div>
+        <div className="result">
+          {data.map((item, index) => {
+            if (item.candidate != selected) return;
+            return (
+              <Card className="mt-3 overflow-y-hidden hover:scale-105">
+                <CardBody>
+                  <h4 className="text-xl text-primary-500">{item.title}</h4>
+                  <p>
+                    來源:{" "}
+                    <Link
+                      key={index}
+                      href={item.source}
+                      className="max-w-[80%]"
+                      style={{
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        maxWidth: "200px",
+                      }}
+                    >
+                      {item.source}
+                    </Link>
+                    ...
                   </p>
-                </ModalBody>
-                <ModalFooter>
-                  <Button color="danger" variant="light" onPress={onClose}>
-                    關閉
-                  </Button>
-                  <Button
-                    color="primary"
-                    onPress={() => {
-                      newPolicy();
-                      onClose();
-                      window.location.reload();
-                    }}
-                  >
-                    送出
-                  </Button>
-                </ModalFooter>
-              </>
-            )}
-          </ModalContent>
-        </Modal>
+                </CardBody>
+              </Card>
+            );
+          })}
+        </div>
       </div>
-      <div className="result">
-        {data.map((item, index) => {
-          if (item.candidate != selected) return;
-          return (
-            <Card className="mt-3 overflow-y-hidden hover:scale-105">
-              <CardBody>
-                <h4 className="text-xl text-primary-500">{item.title}</h4>
-                <p>
-                  來源:{" "}
-                  <Link
-                    key={index}
-                    href={item.source}
-                    className="max-w-[80%]"
-                    style={{
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      maxWidth: "200px",
-                    }}
-                  >
-                    {item.source}
-                  </Link>
-                  ...
-                </p>
-              </CardBody>
-            </Card>
-          );
-        })}
-      </div>
-    </div>
+    </>
   );
 }
