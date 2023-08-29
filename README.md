@@ -1,7 +1,6 @@
-<center>
-<h1>2024 總統大選
-<p style="font-size:12px; margin-top:4px;">Author : Lazp</p></h1>
-</center>
+
+<h1 align="center">2024 總統政見便利貼</h1>
+
 
 ## Screenshot
 ![tw2024policy screenshot](image.png)
