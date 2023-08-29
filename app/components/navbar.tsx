@@ -19,7 +19,6 @@ import {
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuItems: string[] = ["Home", "About", "Research"];
 
   return (
     <Navbar>
@@ -82,13 +81,22 @@ export default function App() {
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link color={"foreground"} className="w-full" href="#" size="lg">
-              {item}
-            </Link>
-          </NavbarMenuItem>
-        ))}
+        <NavbarMenuItem>
+          <Link color={"foreground"} className="w-full" href="/" size="lg">
+            Home
+          </Link>
+          <Link color={"foreground"} className="w-full" href="/about" size="lg">
+            About
+          </Link>
+          <Link
+            color={"foreground"}
+            className="w-full"
+            href="/research"
+            size="lg"
+          >
+            Research
+          </Link>
+        </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
   );
