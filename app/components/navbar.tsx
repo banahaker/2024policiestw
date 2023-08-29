@@ -44,7 +44,7 @@ export default function App() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="/research">
             Research
           </Link>
         </NavbarItem>
