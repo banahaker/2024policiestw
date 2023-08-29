@@ -1,82 +1,10 @@
-## Example app using MongoDB
+<center>
+<h1>2024 總統大選
+<p style="font-size:12px; margin-top:4px;">Author : Lazp</p></h1>
+</center>
 
-[MongoDB](https://www.mongodb.com/) is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. This example will show you how to connect to and use MongoDB as your backend for your Next.js app.
+## Screenshot
+![tw2024policy screenshot](image.png)
 
-If you want to learn more about MongoDB, visit the following pages:
-
-- [MongoDB Atlas](https://mongodb.com/atlas)
-- [MongoDB Documentation](https://docs.mongodb.com/)
-
-## Deploy your own
-
-Once you have access to the environment variables you'll need, deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?project-name=with-mongodb&repository-name=with-mongodb&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-mongodb&integration-ids=oac_jnzmjqM10gllKmSrG0SGrHOH)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-mongodb with-mongodb-app
-```
-
-```bash
-yarn create next-app --example with-mongodb with-mongodb-app
-```
-
-```bash
-pnpm create next-app --example with-mongodb with-mongodb-app
-```
-
-## Configuration
-
-### Set up a MongoDB database
-
-Set up a MongoDB database either locally or with [MongoDB Atlas for free](https://mongodb.com/atlas).
-
-### Set up environment variables
-
-Copy the `env.local.example` file in this directory to `.env.local` (which will be ignored by Git):
-
-```bash
-cp .env.local.example .env.local
-```
-
-Set each variable on `.env.local`:
-
-- `MONGODB_URI` - Your MongoDB connection string. If you are using [MongoDB Atlas](https://mongodb.com/atlas) you can find this by clicking the "Connect" button for your cluster.
-
-### Run Next.js in development mode
-
-```bash
-npm install
-npm run dev
-
-# or
-
-yarn install
-yarn dev
-```
-
-Your app should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
-
-You will either see a message stating "You are connected to MongoDB" or "You are NOT connected to MongoDB". Ensure that you have provided the correct `MONGODB_URI` environment variable.
-
-When you are successfully connected, you can refer to the [MongoDB Node.js Driver docs](https://mongodb.github.io/node-mongodb-native/3.4/tutorials/collections/) for further instructions on how to query your database.
-
-## Deploy on Vercel
-
-You can deploy this app to the cloud with [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-#### Deploy Your Local Project
-
-To deploy your local project to Vercel, push it to GitHub/GitLab/Bitbucket and [import to Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example).
-
-**Important**: When you import your project on Vercel, make sure to click on **Environment Variables** and set them to match your `.env.local` file.
-
-#### Deploy from Our Template
-
-Alternatively, you can deploy using our template by clicking on the Deploy button below.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?project-name=with-mongodb&repository-name=with-mongodb&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-mongodb&integration-ids=oac_jnzmjqM10gllKmSrG0SGrHOH)
+## 專案起源
+2024 大選將至，各路參選者摩拳擦掌，在攻擊對手的同時也相繼提出自己的政績。但多數人並不清楚各候選人有什麼樣的政績，最後淪為意識形態的選舉，對於民主國家來說是非常不好的現象(對執政黨來說就不好說了)因此這個專案就產生了，可以讓想瞭解的人查看已整理的政績，也希望公民們可以一同參與這樣的民主過程，因此大家也都可以加上自己看到的政績，而我們也會盡可能去確認訊息真偽，創造好的民主社會。
