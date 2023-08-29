@@ -66,6 +66,8 @@ export default function Platform() {
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
+    if (!newValue) return;
+    console.log(e.target.value);
     setSelected(newValue);
   };
 
